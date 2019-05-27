@@ -13,7 +13,6 @@ RUN apk add --no-cache --virtual .build-deps \
     && apk add --no-cache \
         curl \
         git \
-        imagemagick \
         libmcrypt \
         mysql-client \
         postgresql-libs \
