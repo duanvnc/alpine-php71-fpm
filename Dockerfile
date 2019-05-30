@@ -36,4 +36,12 @@ RUN apk add --no-cache --virtual .build-deps \
     && curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer \
     && apk del -f .build-deps
 
+RUN chown -R www-data:www-data /var/www/
+
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 WORKDIR /var/www/
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["php-fpm"]
